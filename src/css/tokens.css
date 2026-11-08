@@ -1,0 +1,20 @@
+/* The only file in the project that may hold colour literals.
+   Every value is a real pixel read from the supplied brand and reference images (research/assets-report.json).
+   Method "kmeans" = k-means centroid snapped to the nearest real pixel. Method "bucket" = most common bright 4-bit bucket, first real pixel in it.
+   Format: source file, x,y of the real pixel. */
+:root {
+  --color-bg: #06131b;        /* kmeans, brand/LOGO GLIDE PNG.png, 0,0 */
+  --color-bg-deep: #010b15;   /* kmeans, reference/SAMPUL GLIDE, 0,0 */
+  --color-navy: #02113a;      /* kmeans, reference/GLIDE 1, 1580,0 */
+  --color-navy-2: #01164b;    /* kmeans, reference/GLIDE 1, 288,4 */
+  --color-navy-3: #022069;    /* kmeans, reference/GLIDE 1, 440,28 */
+  --color-blue: #0e389a;      /* kmeans, reference/GLIDE 1, 900,776 */
+  --color-surface: #091a34;   /* kmeans, reference/SAMPUL GLIDE, 192,45 */
+  --color-surface-2: #1d3561; /* kmeans, reference/SAMPUL GLIDE, 324,225 */
+  --color-mute: #475d8f;      /* kmeans, reference/SAMPUL GLIDE, 513,390 */
+  --color-dim: #8699c1;       /* bucket, reference/SAMPUL GLIDE, 1397,50 */
+  --color-ink: #f1f4ff;       /* bucket, reference/GLIDE 1, 48,24 */
+  --color-accent: #6acef1;    /* kmeans, brand/LOGO GLIDE PNG...png, 1016,608 (glyph fill) */
+  --color-accent-hi: #7ddbf5; /* bucket, reference/SAMPUL GLIDE, 730,205 */
+  --color-mint: var(--color-accent);
+}

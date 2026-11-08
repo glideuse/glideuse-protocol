@@ -1,0 +1,17 @@
+{
+  "name": "glide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GLIDE site build",
+  "license": "MIT",
+  "scripts": {
+    "assets": "node tools/assets.mjs",
+    "build": "node tools/build.mjs",
+    "gates": "node tools/gates.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0",
+    "pngjs": "^7.0.0",
+    "sharp": "^0.34.0"
+  }
+}

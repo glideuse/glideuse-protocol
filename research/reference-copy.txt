@@ -1,0 +1,696 @@
+ 
+ 
+ 
+ 
+ 
+ FloatFuse · One Float coin, paying holders in up to ten stocks 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ FLOATFUSE 
+ 
+ Pair How it works Stocks Coins Analytics Docs 
+ 
+ 
+ 
+ CA 
+ Launch a coin 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ One Float coin, paying holders in up to ten stocks . 
+ 0 of 10 stocks chosen 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Stocks Pick up to ten. Tap a stock on the ring or in the list. 
+ 0 / 10 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ The coin A Float coin 
+ 
+ Paying in nothing yet. Pick the first stock. 
+ 
+ 
+ Continue to the launch 
+ The stocks are fixed at launch and cannot be changed later. 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ How it works 
+ 
+ 
+ Launch You pick the anchor, up to ten payout stocks, a fee of 1, 2 or 2.5% and a first buy, then sign
+ one payment. The coin launches through the Float program on Raydium LaunchLab, and your first buy lands in your wallet. 
+ Trade Every buy and sell pays the fee. Float splits it the same way for every coin: 15% to the holders in
+ the anchor, 5% creator share, 35% to $FLOAT burns, 35% to traders and 10% to the treasury. 
+ Payout The 5% creator share lands in a wallet that belongs to this coin alone, and goes where you chose: to
+ the holders in the stocks you picked, to you, to any wallet, to a charity, or a mix. Nobody claims anything. 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ Every stock a coin can pay in 
+ 
+ 
+ 
+ 
+ Show more 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ Coins launched here 
+ All coins 
+ 
+ Loading coins 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ FLOATFUSE 
+ Pair How it works Stocks Coins Docs Terms 
+ 
+ Coins launch through the Float program on Raydium LaunchLab. The stocks a coin pays in are set at launch
+ and cannot be changed. The creator share is paid to whoever holds the coin at the time of each payout. 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+width=device-width, initial-scale=1
+Launch a coin through Float that pays its holders in up to ten tokenized stocks. Every trade pays the holders: in the anchor through Float, and in the stocks you picked through FloatFuse.
+#050c10
+FloatFuse
+One Float coin, paying holders in up to ten stocks.
+/icon.png
+summary
+FloatFuse on X
+FloatFuse on X
+Copy the contract address
+Search
+Search stocks
+s own pairing list (/api/pairs), the tokenized stocks only (xStocks, PreStocks, Sunrise,
+ Tessera): those are the tokens a coin
+blend:change
+/create
+
+
+']/g, (c) => ({ '&': '&amp;', ' ': '&gt;', '
+: 
+, "
+: '&#39;' }[c]));
+const el = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+function toast(msg) {
+ const t = $('toast');
+ t.textContent = msg;
+ t.classList.add('show');
+ clearTimeout(toast.timer);
+ toast.timer = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+/* ------------------------------------------------------------- the stocks */
+let STOCKS = [];
+const ISSUER = { xStock: 'xstock', PreStock: 'prestock', Sunrise: 'sunrise', Tessera: 'tessera' };
+const byMint = (m) => STOCKS.find((x) => x.mint === m);
+// a stock without a logo gets its first letters on a disc
+const letters = (sym) => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns=
+ width=
+ height=
+><circle cx=
+ cy=
+ r=
+ fill=
+/><text x=
+ y=
+ text-anchor=
+ font-family=
+ font-weight=
+ font-size=
+ fill=
+> 
+}, true);
+
+/* ------------------------------------------------------------- the choice */
+let sel = [];
+try { sel = JSON.parse(sessionStorage.getItem('blend.sel') || '[]'); } catch (e) { sel = []; }
+
+const BLEND = window.BLEND = {
+ letters,
+ get stocks() { return STOCKS; },
+ get sel() { return sel; },
+ has: (m) => sel.includes(m),
+ toggle(m) {
+ if (!byMint(m)) return;
+ if (sel.includes(m)) sel = sel.filter((x) => x !== m);
+ else if (sel.length >= MAX) { toast('Ten stocks is the limit'); return; }
+ else sel = sel.concat(m);
+ try { sessionStorage.setItem('blend.sel', JSON.stringify(sel)); } catch (e) { /* no storage */ }
+ render();
+ window.dispatchEvent(new CustomEvent('blend:change', { detail: { sel: sel.slice() } }));
+ },
+};
+
+function words() {
+ const names = sel.map((m) => nice(byMint(m)));
+ if (!names.length) return '';
+ if (names.length === 1) return names[0];
+ return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+}
+
+/* ------------------------------------------------------------- draw everything */
+let q = '', sq = '', pcat = 'all', scat = 'all', sshow = 36;
+
+function tabs(host, cur, set) {
+ host.innerHTML = '';
+ CATS.forEach(([id, label]) => {
+ const n = STOCKS.filter((s) => inCat(s, id)).length;
+ if (!n) return;
+ const b = el(`<button class=
+on
+
+> <span class=
+> `);
+ b.onclick = () => set(id);
+ host.append(b);
+ });
+}
+function render() {
+ const n = sel.length;
+ $('heron').textContent = ` of stocks chosen`;
+ $('count').textContent = ` / `;
+ $('count').classList.toggle('full', n >= MAX);
+
+ // the list
+ const term = q.trim().toLowerCase();
+ const grid = $('sgrid');
+ grid.innerHTML = '';
+ tabs($('pcats'), term ? '' : pcat, (id) => { pcat = id; q = ''; $('q').value = ''; render(); });
+ const rows = STOCKS.filter((s) => (term ? hit(s, term) : inCat(s, pcat)));
+ if (!rows.length) grid.append(el('<span class=
+>No stock matches that. '));
+ rows.forEach((s) => {
+ const on = sel.includes(s.mint);
+ const b = el(`<button class=
+on
+dim
+
+ title=
+>
+ <img src=
+ alt=
+ loading=
+> · ✓ `);
+ b.onclick = () => BLEND.toggle(s.mint);
+ grid.append(b);
+ });
+
+ // the slip
+ const sentence = $('sentence');
+ if (!n) sentence.innerHTML = 'Paying in nothing yet. Pick the first stock.';
+ else sentence.innerHTML = `A Float coin that pays its holders in . You pick the anchor, the fee, who gets the fees and the first buy on the next page.`;
+ const bar = $('bar');
+ bar.innerHTML = '';
+ sel.forEach((m) => bar.append(el(` <img src=
+ alt=
+> `)));
+ for (let i = n; i < MAX; i++) bar.append(el('<span class=
+> '));
+ const legs = $('legs');
+ legs.innerHTML = '';
+ if (!n) legs.append(el('<li class=
+>The holders are paid in every stock you pick here, in equal parts. '));
+ sel.forEach((m) => {
+ const s = byMint(m);
+ const li = el(` <img src=
+ alt=
+><span class=
+> <span class=
+> 
+ <span class=
+> <button class=
+ title=
+>× `);
+ li.querySelector('.x').onclick = () => BLEND.toggle(m);
+ legs.append(li);
+ });
+ $('go').href = LAUNCH + (n ? '?payout=' + sel.join(',') : '');
+ $('go').classList.toggle('off', !n);
+
+ drawFlow();
+ drawTable();
+}
+
+/* ------------------------------------------------------------- the flow chart */
+function drawFlow() {
+ const svg = $('flow');
+ const W = 1000, H = 420, cx = 110, cy = H / 2;
+ const list = sel.length ? sel.map(byMint) : null;
+ const n = list ? list.length : MAX;
+ const gap = Math.min(40, (H - 40) / n);
+ const y0 = cy - ((n - 1) * gap) / 2;
+ let out = ` <linearGradient id=
+ x1=
+ x2=
+><stop offset=
+ stop-color=
+ stop-opacity=
+/><stop offset=
+ stop-color=
+ stop-opacity=
+/> 
+ <clipPath id=
+><circle cx=
+ cy=
+ r=
+/> `;
+ // the curves
+ for (let i = 0; i < n; i++) {
+ const y = y0 + i * gap;
+ const x1 = cx + 60, x2 = 560, x3 = 890;
+ out += `<path d=
+ fill=
+ stroke=
+url(#g)
+rgba(143,212,241,.14)
+ stroke-width=
+ ${list ? '' : 'stroke-dasharray=
+'}/>`;
+ // a fee dot running back
+ if (list) out += `<circle r=
+ fill=
+><animateMotion dur=
+ repeatCount=
+ keyPoints=
+ keyTimes=
+ calcMode=
+ path=
+/> `;
+ }
+ // the coin
+ out += `<circle cx=
+ cy=
+ r=
+ fill=
+ stroke=
+/>
+ <circle cx=
+ cy=
+ r=
+ fill=
+/>
+ <image href=
+ x=
+ y=
+ width=
+ height=
+/>
+ <text x=
+ y=
+ text-anchor=
+ font-size=
+ letter-spacing=
+>YOUR COIN `;
+ // the stocks
+ for (let i = 0; i < n; i++) {
+ const y = y0 + i * gap, x = 890;
+ if (list) {
+ const s = list[i];
+ out += `<clipPath id=
+><circle cx=
+ cy=
+ r=
+/> 
+ <image href=
+ x=
+ y=
+ width=
+ height=
+ clip-path=
+/>
+ <circle cx=
+ cy=
+ r=
+ fill=
+ stroke=
+/>
+ <text x=
+ y=
+ font-size=
+ fill=
+> `;
+ } else {
+ out += `<circle cx=
+ cy=
+ r=
+ fill=
+ stroke=
+ stroke-dasharray=
+/>`;
+ }
+ }
+ // the words in the middle
+ out += `<text x=
+ y=
+ text-anchor=
+ font-size=
+ letter-spacing=
+> 
+ <text x=
+ y=
+ text-anchor=
+ font-size=
+ letter-spacing=
+> `;
+ svg.innerHTML = out;
+}
+
+/* ------------------------------------------------------------- the table */
+function drawTable() {
+ const host = $('stable');
+ host.innerHTML = '';
+ const term = sq.trim().toLowerCase();
+ tabs($('scats'), term ? '' : scat, (id) => { scat = id; sq = ''; $('sq').value = ''; sshow = 36; drawTable(); });
+ const rows = STOCKS.filter((s) => (term ? hit(s, term) : inCat(s, scat)));
+ const c = (id) => STOCKS.filter((s) => s.cat === id).length;
+ $('scount').textContent = ` stocks: xStocks, from Sunrise, PreStocks and from Tessera. Tap one to add it to the coin.`;
+ rows.slice(0, term ? rows.length : sshow).forEach((s) => {
+ const on = sel.includes(s.mint);
+ const r = el(`<div class=
+on
+
+><img src=
+ alt=
+ loading=
+>
+ · <span class=
+> `);
+ r.onclick = () => BLEND.toggle(s.mint);
+ host.append(r);
+ });
+ const more = $('smore');
+ const left = term ? 0 : rows.length - sshow;
+ more.hidden = left { sshow = rows.length; drawTable(); };
+}
+
+/* ------------------------------------------------------------- coins */
+async function loadCoins() {
+ // /api/coins: name, ticker, image, mint, quote {symbol}, payout [{symbol, mint, logo}], fees {claimedUsd}, createdAt
+ const dep = $('dep');
+ const ago = (ts) => { const x = Math.max(0, Date.now() / 1000 - ts); return x '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+ try {
+ const res = await fetch('/api/coins');
+ const data = await res.json();
+ if (!data.ok || !data.coins || !data.coins.length) throw new Error('none');
+ const coins = data.coins.slice().sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0)).slice(0, 50);
+ dep.innerHTML = '<div class=
+> Coin Pays in Fees Age ';
+ coins.forEach((c) => {
+ const pays = (c.payout || []).map((a) => `<img src=
+
+ alt=
+ title=
+
+>`).join('') || '<span class=
+>SOL ';
+ dep.append(el(`<a class=
+ href=
+><div class=
+><img class=
+ src=
+
+ alt=
+> · ).symbol || 'SOL')} 
+ <div class=
+> <span class=
+> <span class=
+> `));
+ });
+ } catch (e) {
+ dep.innerHTML = '<div class=
+>No coins yet. The first coin launched here is listed with its stocks. ';
+ }
+}
+
+/* ------------------------------------------------------------- CA and X, set in the admin */
+async function loadConfig() {
+ try {
+ const data = await fetch('/api/config', { cache: 'no-store' }).then((r) => r.json());
+ const c = data.config || {};
+ CA = (c.ca || '').trim();
+ if (c.x) { $('xlink').href = c.x; $('xlink').hidden = false; }
+ } catch (e) { /* try again in a moment */ }
+ const b = $('ca');
+ if (!CA) b.hidden = true;
+ else {
+ $('cav').textContent = CA.slice(0, 4) + '…' + CA.slice(-4);
+ b.hidden = false;
+ b.onclick = () => { navigator.clipboard.writeText(CA).then(() => toast('Contract address copied')); };
+ }
+ setTimeout(loadConfig, CA ? 60000 : 15000);
+}
+
+/* ------------------------------------------------------------- start */
+(async () => {
+ try {
+ const data = await fetch('/api/pairs').then((r) => r.json());
+ STOCKS = (data.pairs || []).filter((a) => ISSUER[a.issuer])
+ .map((a) => ({ mint: a.mint, symbol: a.symbol, name: a.name, label: a.issuer, cat: ISSUER[a.issuer], logo: a.logo || letters(a.symbol) }));
+ } catch (e) { STOCKS = []; }
+ sel = sel.filter(byMint);
+ $('q').oninput = (e) => { q = e.target.value; render(); };
+ $('sq').oninput = (e) => { sq = e.target.value; drawTable(); };
+ render();
+ window.dispatchEvent(new CustomEvent('blend:ready', { detail: { stocks: STOCKS, sel: sel.slice() } }));
+ loadCoins();
+ loadConfig();
+})();
+
+/* The ring: 2D canvas, no libraries. The 24 xStocks circle slowly on an outer orbit (all of them would be chaos); a
+ chosen stock from the other issuers glides in from the orbit. The chosen ones are pulled onto an inner ring and tied
+ to the coin in the middle with a string the fees run along. Click a disc to pick it or drop it. */
+(() => {
+ const host = document.getElementById('ring');
+ const cv = document.getElementById('rc');
+ const ctx = cv.getContext('2d');
+ const dpr = Math.min(window.devicePixelRatio || 1, 2);
+ let W = 0, H = 0, t0 = performance.now(), visible = true, raf = 0;
+ let stocks = [], sel = [], nodes = [], hover = null;
+ const img = {};
+ const mark = new Image();
+ mark.src = '/float-mark.png';
+
+ function size() {
+ W = host.clientWidth; H = host.clientHeight;
+ cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+ ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+ }
+ window.addEventListener('resize', size);
+ size();
+
+ function load(s) {
+ if (img[s.mint]) return;
+ const im = new Image();
+ im.onerror = () => { im.onerror = null; if (window.BLEND && BLEND.letters) im.src = BLEND.letters(s.symbol); }; // no logo file: the letters
+ im.src = s.logo; img[s.mint] = im;
+ }
+
+ function setup(list, chosen) {
+ stocks = list;
+ sel = chosen;
+ nodes = list.map((s, i) => {
+ const feat = s.cat === 'xstock';
+ if (feat || chosen.includes(s.mint)) load(s);
+ const a = (i / list.length) * Math.PI * 2;
+ return { s, feat, x: 0, y: 0, a, sc: 1, first: true };
+ });
+ }
+ window.addEventListener('blend:ready', (e) => setup(e.detail.stocks, e.detail.sel));
+ window.addEventListener('blend:change', (e) => { sel = e.detail.sel; nodes.forEach((nd) => { if (sel.includes(nd.s.mint)) load(nd.s); }); });
+ // The stock list may be ready before this script runs; then the event never came.
+ if (window.BLEND && window.BLEND.stocks.length) setup(window.BLEND.stocks, window.BLEND.sel.slice());
+
+ const io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible && !raf) raf = requestAnimationFrame(frame); });
+ io.observe(host);
+
+ function geometry() {
+ const m = Math.min(W, H);
+ const wide = W > 900;
+ const R = wide ? Math.min(W * .3, H * .4) : Math.min(W * .4, H * .36);
+ return { cx: wide ? W * .58 : W / 2, cy: wide ? H * .5 : H * .46, R, r: R * .55, cr: R * .2, dr: Math.max(16, Math.min(26, R * .085)), sr: Math.max(13, Math.min(22, R * .075)) };
+ }
+
+ function frame(now) {
+ raf = 0;
+ if (!visible) return;
+ const t = (now - t0) / 1000;
+ const g = geometry();
+ const n = sel.length;
+ const outer = nodes.filter((nd) => nd.feat && !sel.includes(nd.s.mint));
+ const shown = nodes.filter((nd) => nd.feat || sel.includes(nd.s.mint));
+ nodes.forEach((nd) => { if (!nd.feat && !sel.includes(nd.s.mint)) { nd.on = false; nd.first = true; } });
+ ctx.clearRect(0, 0, W, H);
+
+ // the orbits
+ ctx.lineWidth = 1;
+ ctx.strokeStyle = 'rgba(143,212,241,.08)';
+ ctx.beginPath(); ctx.arc(g.cx, g.cy, g.R, 0, Math.PI * 2); ctx.stroke();
+ ctx.strokeStyle = n ? 'rgba(143,212,241,.16)' : 'rgba(143,212,241,.06)';
+ ctx.setLineDash(n ? [] : [3, 7]);
+ ctx.beginPath(); ctx.arc(g.cx, g.cy, g.r, 0, Math.PI * 2); ctx.stroke();
+ ctx.setLineDash([]);
+
+ // target positions
+ outer.forEach((nd, i) => {
+ const a = (i / outer.length) * Math.PI * 2 + t * .05;
+ nd.tx = g.cx + Math.cos(a) * g.R; nd.ty = g.cy + Math.sin(a) * g.R; nd.on = false;
+ });
+ sel.forEach((m, i) => {
+ const nd = nodes.find((x) => x.s.mint === m);
+ if (!nd) return;
+ const a = (i / n) * Math.PI * 2 - Math.PI / 2 - t * .08;
+ nd.tx = g.cx + Math.cos(a) * g.r; nd.ty = g.cy + Math.sin(a) * g.r; nd.on = true;
+ });
+ shown.forEach((nd) => {
+ if (nd.first && nd.feat) { nd.x = nd.tx; nd.y = nd.ty; }
+ if (nd.first && !nd.feat) { const a = Math.atan2(nd.ty - g.cy, nd.tx - g.cx); nd.x = g.cx + Math.cos(a) * g.R * 1.15; nd.y = g.cy + Math.sin(a) * g.R * 1.15; }
+ nd.first = false;
+ nd.x += (nd.tx - nd.x) * .08; nd.y += (nd.ty - nd.y) * .08;
+ const want = nd.on ? 1.25 : (hover === nd ? 1.12 : 1);
+ nd.sc += (want - nd.sc) * .15;
+ });
+
+ // the strings from the chosen ones to the coin, with fee dots running inward
+ shown.filter((nd) => nd.on).forEach((nd, i) => {
+ const grad = ctx.createLinearGradient(nd.x, nd.y, g.cx, g.cy);
+ grad.addColorStop(0, 'rgba(143,212,241,.55)'); grad.addColorStop(1, 'rgba(82,185,226,.12)');
+ ctx.strokeStyle = grad; ctx.lineWidth = 1.5;
+ ctx.beginPath(); ctx.moveTo(nd.x, nd.y); ctx.lineTo(g.cx, g.cy); ctx.stroke();
+ for (let k = 0; k < 2; k++) {
+ const p = ((t * .35 + i * .13 + k * .5) % 1);
+ const px = nd.x + (g.cx - nd.x) * p, py = nd.y + (g.cy - nd.y) * p;
+ ctx.fillStyle = 'rgba(204,237,249,' + (1 - p) * .9 + ')';
+ ctx.beginPath(); ctx.arc(px, py, 2.4, 0, Math.PI * 2); ctx.fill();
+ }
+ });
+
+ // the coin in the middle
+ const pulse = 1 + Math.sin(t * 1.6) * .012;
+ const cr = g.cr * pulse;
+ ctx.save();
+ ctx.shadowColor = 'rgba(82,185,226,' + (n ? .35 : .18) + ')'; ctx.shadowBlur = 40;
+ const cg = ctx.createRadialGradient(g.cx - cr * .3, g.cy - cr * .35, cr * .1, g.cx, g.cy, cr);
+ cg.addColorStop(0, '#1b3a48'); cg.addColorStop(1, '#07131a');
+ ctx.fillStyle = cg;
+ ctx.beginPath(); ctx.arc(g.cx, g.cy, cr, 0, Math.PI * 2); ctx.fill();
+ ctx.restore();
+ ctx.strokeStyle = 'rgba(143,212,241,.45)'; ctx.lineWidth = 1.5;
+ ctx.beginPath(); ctx.arc(g.cx, g.cy, cr, 0, Math.PI * 2); ctx.stroke();
+ ctx.strokeStyle = 'rgba(143,212,241,.14)'; ctx.lineWidth = 1;
+ ctx.beginPath(); ctx.arc(g.cx, g.cy, cr * .82, 0, Math.PI * 2); ctx.stroke();
+ if (mark.complete && mark.naturalWidth) { const s = cr * 1.3; ctx.drawImage(mark, g.cx - s / 2, g.cy - s / 2, s, s); }
+ ctx.fillStyle = 'rgba(140,166,179,.9)'; ctx.font = '500 11px 
+, monospace'; ctx.textAlign = 'center';
+ ctx.fillText(n ? n + ' OF 10' : 'FLOAT COIN', g.cx, g.cy + cr + 20);
+
+ // the discs, outer first so the chosen ones lie on top
+ const draw = (nd) => {
+ const r = (nd.on ? g.sr * 1.25 : g.dr) * (nd.sc / (nd.on ? 1.25 : 1));
+ const im = img[nd.s.mint];
+ ctx.save();
+ ctx.globalAlpha = nd.on ? 1 : (n >= 10 ? .3 : .62);
+ ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = 14; ctx.shadowOffsetY = 4;
+ ctx.fillStyle = '#0e1b23';
+ ctx.beginPath(); ctx.arc(nd.x, nd.y, r, 0, Math.PI * 2); ctx.fill();
+ ctx.restore();
+ ctx.save();
+ ctx.globalAlpha = nd.on ? 1 : (n >= 10 ? .3 : .62);
+ ctx.beginPath(); ctx.arc(nd.x, nd.y, r, 0, Math.PI * 2); ctx.clip();
+ if (im && im.complete && im.naturalWidth) ctx.drawImage(im, nd.x - r, nd.y - r, r * 2, r * 2);
+ ctx.restore();
+ ctx.globalAlpha = 1;
+ ctx.strokeStyle = nd.on ? 'rgba(143,212,241,.85)' : (hover === nd ? 'rgba(143,212,241,.6)' : 'rgba(143,212,241,.2)');
+ ctx.lineWidth = nd.on ? 1.8 : 1;
+ ctx.beginPath(); ctx.arc(nd.x, nd.y, r + 1, 0, Math.PI * 2); ctx.stroke();
+ if (nd.on || hover === nd) {
+ ctx.fillStyle = nd.on ? '#ccedf9' : 'rgba(204,237,249,.8)'; ctx.font = '600 10.5px 
+; ctx.textAlign = 
+;
+ ctx.fillText(nd.s.symbol, nd.x, nd.y + r + 15);
+ }
+ nd.rr = r;
+ };
+ shown.filter((nd) => !nd.on).forEach(draw);
+ shown.filter((nd) => nd.on).forEach(draw);
+
+ raf = requestAnimationFrame(frame);
+ }
+ raf = requestAnimationFrame(frame);
+
+ // the pointer
+ function at(e) {
+ const b = cv.getBoundingClientRect();
+ const x = e.clientX - b.left, y = e.clientY - b.top;
+ let best = null;
+ nodes.forEach((nd) => { if (!nd.feat && !sel.includes(nd.s.mint)) return; const d = Math.hypot(nd.x - x, nd.y - y); if (d <= (nd.rr || 20) + 4 && (!best || d < best.d)) best = { nd, d }; });
+ return best ? best.nd : null;
+ }
+ cv.addEventListener(
+, (e) => { hover = at(e); host.classList.toggle(
+, !!hover); });
+ cv.addEventListener(
+, () => { hover = null; host.classList.remove(
+); });
+ cv.addEventListener(

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GLIDE · One coin, a curated slate of equities, on Solana</title>
+<meta name="description" content="GLIDE is a Solana token with a single idea: hold one coin and reach a hand-picked slate of equities, capped at ten, inside a connected crypto ecosystem.">
+<meta name="theme-color" content="{{THEME_COLOR}}">
+<link rel="canonical" href="https://glideuse.fun/">
+<meta property="og:title" content="GLIDE">
+<meta property="og:description" content="One coin. A curated slate of equities. One connected ecosystem on Solana.">
+<meta property="og:image" content="https://glideuse.fun/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><i id="progress"></i></div>
+
+<header class="top" id="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#flight" aria-label="GLIDE, back to the top"><img src="assets/logo-192.png" alt="" width="30" height="30"><span>GLIDE</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#idea">Idea</a><a href="#path">Path</a><a href="#market">Market</a>
+    </nav>
+    <div class="top-r">
+      {{SOCIAL}}
+      <a class="btn sm cta" href="#market">Open the board</a>
+    </div>
+  </div>
+  <div class="wrap">{{CA_BAND}}</div>
+</header>
+
+<main>
+  <section class="hero" id="flight">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="layer" data-depth="0.3"><div class="mesh m1"></div><div class="mesh m2"></div><div class="mesh m3"></div></div>
+      <div class="layer" data-depth="0.5"><div class="gridlines"></div></div>
+      <div class="layer" data-depth="0.9">
+        <svg class="ribbons" viewBox="0 0 1500 500" preserveAspectRatio="none" focusable="false">
+          <path d="M0 40 C 260 30, 420 330, 640 410" fill="none"/>
+          <path d="M0 150 C 240 150, 420 300, 600 410" fill="none"/>
+          <path d="M1500 40 C 1240 30, 1080 330, 860 410" fill="none"/>
+          <path d="M1500 190 C 1260 200, 1080 320, 900 410" fill="none"/>
+        </svg>
+      </div>
+    </div>
+    <div class="ring" id="ring"><canvas id="rc" aria-hidden="true"></canvas></div>
+    <div class="wrap hero-txt">
+      <p class="pill" id="pill" data-kind="sync" role="status" aria-live="polite"><i class="dot"></i><span id="pilltxt">Syncing the board</span></p>
+      <h1>Hold one coin. Reach a slate of <em>ten equities</em>.</h1>
+      <p class="lede">GLIDE ties a single Solana token to a hand-picked group of equities, capped on purpose, inside one connected crypto ecosystem.</p>
+    </div>
+  </section>
+
+  <section class="ticker" aria-label="Live Solana ticker">
+    <div class="track" id="track"></div>
+  </section>
+
+  <section class="sect" id="idea">
+    <div class="wrap">
+      <div class="sheet">
+        <div class="pick spot" data-reveal>
+          <div class="pick-head">
+            <div><p class="lbl">The idea</p><p class="sub">Three angles on one token. Switch tabs to read each.</p></div>
+          </div>
+          <div class="cats" id="tabs" role="tablist" aria-label="Idea angles"></div>
+          <div class="sgrid" id="cards" role="tabpanel"></div>
+        </div>
+
+        <aside class="slip spot" id="slip" data-reveal>
+          <div class="slip-head">
+            <p class="lbl">Board pulse</p><b>Solana, right now</b>
+          </div>
+          <p class="sentence" id="sentence">Waiting for an opening batch.</p>
+          <div class="bar" id="bar" aria-hidden="true"></div>
+          <div class="stats" id="stats">
+            <div class="stat spot"><span class="k">Board volume</span><b class="v" id="st-vol">—</b></div>
+            <div class="stat spot"><span class="k">Top mover</span><b class="v" id="st-top">—</b></div>
+            <div class="stat spot"><span class="k">Tokens tracked</span><b class="v" id="st-n">—</b></div>
+            <div class="stat spot"><span class="k">GLIDE price</span><b class="v" id="st-own">pending</b></div>
+          </div>
+          <p class="fine">Figures come from a public aggregator and can lag or be wrong.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect how" id="path">
+    <div class="wrap">
+      <div class="head" data-reveal><h2>From holding to exposure</h2></div>
+      <div class="flow spot" data-reveal><svg id="flow" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="One holding point feeding ten equity slots"></svg></div>
+      <div class="caps" data-stagger>
+        <div class="cap spot" data-reveal><b>Hold</b><p>Keep GLIDE in a Solana wallet. That single step is the way in.</p></div>
+        <div class="cap spot" data-reveal><b>Unlock</b><p>Holding opens the door to a curated slate of equities, never more than ten.</p></div>
+        <div class="cap spot" data-reveal><b>Connect</b><p>The ecosystem keeps every piece in one place, so nothing sits scattered.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect" id="market">
+    <div class="wrap">
+      <div class="head row-head" data-reveal>
+        <div><h2>Solana market board</h2><p>Row one is held for GLIDE. The rest are the busiest boosted Solana tokens by daily volume, refreshed every minute while this tab stays open.</p></div>
+      </div>
+      <div class="board" id="board" data-reveal>
+        <div class="hdr" aria-hidden="true"><span>Token</span><span>Price</span><span>24h</span><span>Volume</span><span>Liquidity</span><span></span></div>
+        <div id="board-body"></div>
+      </div>
+      <p class="board-note" id="board-note" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#flight" aria-label="GLIDE, back to the top"><img src="assets/logo-192.png" alt="" width="30" height="30"><span>GLIDE</span></a>
+      <nav aria-label="Footer"><a href="#idea">Idea</a><a href="#path">Path</a><a href="#market">Market</a></nav>
+    </div>
+    <p class="disclaim">GLIDE is a community token on Solana. Nothing on this page is financial advice. Market figures come from a public aggregator and may be late, partial or wrong, so check anything you plan to act on.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script type="application/json" id="glide-register">{{REGISTER_JSON}}</script>
+<script src="js/core.js"></script>
+<script src="js/ca.js"></script>
+<script src="js/market.js"></script>
+<script src="js/own.js"></script>
+<script src="js/page.js"></script>
+<script src="js/hero.js"></script>
+</body>
+</html>

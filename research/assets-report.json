@@ -1,0 +1,548 @@
+[
+  {
+    "file": "brand\\LOGO GLIDE JPG.jpg.jpeg",
+    "bytes": 230295,
+    "header": {
+      "fmt": "jpeg",
+      "h": 2000,
+      "w": 2000,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4000000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.9057,
+        "hex": "#06131b",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "share": 0.0914,
+        "hex": "#6accef",
+        "x": 1016,
+        "y": 624
+      },
+      {
+        "share": 0.0011,
+        "hex": "#3f798f",
+        "x": 1512,
+        "y": 1296
+      },
+      {
+        "share": 0.0009,
+        "hex": "#08121b",
+        "x": 960,
+        "y": 608
+      },
+      {
+        "share": 0.0008,
+        "hex": "#163f51",
+        "x": 656,
+        "y": 1056
+      }
+    ]
+  },
+  {
+    "file": "brand\\LOGO GLIDE PNG...png",
+    "bytes": 332576,
+    "header": {
+      "fmt": "png",
+      "w": 2000,
+      "h": 2000,
+      "bitDepth": 8,
+      "colourType": 6,
+      "colourName": "truecolor RGBA",
+      "interlace": 0
+    },
+    "alphaHistogram8Bins": [
+      3626636,
+      1764,
+      1298,
+      1212,
+      1219,
+      1630,
+      1845,
+      364396
+    ],
+    "transparentPixels": 3999924,
+    "pureBlackTransparent": 3622079,
+    "kmeansSnapped": [
+      {
+        "share": 0.3276,
+        "hex": "#69cef1",
+        "x": 1008,
+        "y": 592
+      },
+      {
+        "share": 0.3182,
+        "hex": "#6acef1",
+        "x": 1016,
+        "y": 608
+      },
+      {
+        "share": 0.1937,
+        "hex": "#6bcff2",
+        "x": 1040,
+        "y": 640
+      },
+      {
+        "share": 0.1516,
+        "hex": "#68cdf0",
+        "x": 936,
+        "y": 664
+      },
+      {
+        "share": 0.0089,
+        "hex": "#6fd3f7",
+        "x": 1032,
+        "y": 896
+      }
+    ]
+  },
+  {
+    "file": "brand\\LOGO GLIDE PNG.png",
+    "bytes": 316504,
+    "header": {
+      "fmt": "png",
+      "w": 2000,
+      "h": 2000,
+      "bitDepth": 8,
+      "colourType": 2,
+      "colourName": "truecolor RGB",
+      "interlace": 0
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4000000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.9063,
+        "hex": "#06131b",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "share": 0.0914,
+        "hex": "#6acdf0",
+        "x": 1032,
+        "y": 640
+      },
+      {
+        "share": 0.001,
+        "hex": "#3d7a91",
+        "x": 1512,
+        "y": 1296
+      },
+      {
+        "share": 0.0006,
+        "hex": "#0f252f",
+        "x": 968,
+        "y": 600
+      },
+      {
+        "share": 0.0006,
+        "hex": "#224757",
+        "x": 944,
+        "y": 840
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 1.jpg.jpeg",
+    "bytes": 126664,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.4505,
+        "hex": "#02113a",
+        "x": 1580,
+        "y": 0
+      },
+      {
+        "share": 0.2458,
+        "hex": "#01164b",
+        "x": 288,
+        "y": 4
+      },
+      {
+        "share": 0.1501,
+        "hex": "#022069",
+        "x": 440,
+        "y": 28
+      },
+      {
+        "share": 0.0988,
+        "hex": "#6ed6f9",
+        "x": 1476,
+        "y": 576
+      },
+      {
+        "share": 0.0548,
+        "hex": "#0e389a",
+        "x": 900,
+        "y": 776
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 2.jpg.jpeg",
+    "bytes": 123296,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.4466,
+        "hex": "#02113a",
+        "x": 1580,
+        "y": 0
+      },
+      {
+        "share": 0.2504,
+        "hex": "#01164b",
+        "x": 288,
+        "y": 4
+      },
+      {
+        "share": 0.1504,
+        "hex": "#022068",
+        "x": 424,
+        "y": 24
+      },
+      {
+        "share": 0.0954,
+        "hex": "#70d7f8",
+        "x": 1280,
+        "y": 408
+      },
+      {
+        "share": 0.0571,
+        "hex": "#0d3799",
+        "x": 968,
+        "y": 808
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 3.jpg.jpeg",
+    "bytes": 122783,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.449,
+        "hex": "#02113a",
+        "x": 1580,
+        "y": 0
+      },
+      {
+        "share": 0.2513,
+        "hex": "#01164b",
+        "x": 288,
+        "y": 4
+      },
+      {
+        "share": 0.1503,
+        "hex": "#022068",
+        "x": 424,
+        "y": 24
+      },
+      {
+        "share": 0.0925,
+        "hex": "#75d7fa",
+        "x": 1288,
+        "y": 356
+      },
+      {
+        "share": 0.0569,
+        "hex": "#0d3799",
+        "x": 968,
+        "y": 808
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 4.jpg.jpeg",
+    "bytes": 119966,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.4233,
+        "hex": "#021138",
+        "x": 24,
+        "y": 0
+      },
+      {
+        "share": 0.2668,
+        "hex": "#011749",
+        "x": 288,
+        "y": 0
+      },
+      {
+        "share": 0.1578,
+        "hex": "#011f67",
+        "x": 448,
+        "y": 24
+      },
+      {
+        "share": 0.094,
+        "hex": "#6ed6f9",
+        "x": 1476,
+        "y": 576
+      },
+      {
+        "share": 0.0582,
+        "hex": "#073597",
+        "x": 504,
+        "y": 248
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 5.jpg.jpeg",
+    "bytes": 130477,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.427,
+        "hex": "#021138",
+        "x": 24,
+        "y": 0
+      },
+      {
+        "share": 0.2649,
+        "hex": "#011749",
+        "x": 288,
+        "y": 0
+      },
+      {
+        "share": 0.1518,
+        "hex": "#022068",
+        "x": 424,
+        "y": 24
+      },
+      {
+        "share": 0.0996,
+        "hex": "#70d7f8",
+        "x": 1280,
+        "y": 408
+      },
+      {
+        "share": 0.0567,
+        "hex": "#0d3799",
+        "x": 968,
+        "y": 808
+      }
+    ]
+  },
+  {
+    "file": "reference\\GLIDE 6.jpg.jpeg",
+    "bytes": 126598,
+    "header": {
+      "fmt": "jpeg",
+      "h": 900,
+      "w": 1600,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1440000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.5034,
+        "hex": "#02113a",
+        "x": 1580,
+        "y": 0
+      },
+      {
+        "share": 0.2373,
+        "hex": "#02194f",
+        "x": 964,
+        "y": 4
+      },
+      {
+        "share": 0.1202,
+        "hex": "#022370",
+        "x": 356,
+        "y": 64
+      },
+      {
+        "share": 0.0974,
+        "hex": "#70d7f8",
+        "x": 1280,
+        "y": 408
+      },
+      {
+        "share": 0.0417,
+        "hex": "#113fa1",
+        "x": 924,
+        "y": 764
+      }
+    ]
+  },
+  {
+    "file": "reference\\SAMPUL GLIDE JPG.jpg.jpeg",
+    "bytes": 297927,
+    "header": {
+      "fmt": "jpeg",
+      "h": 500,
+      "w": 1500,
+      "components": 3
+    },
+    "alphaHistogram8Bins": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      750000
+    ],
+    "transparentPixels": 0,
+    "pureBlackTransparent": 0,
+    "kmeansSnapped": [
+      {
+        "share": 0.7168,
+        "hex": "#010b15",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "share": 0.1594,
+        "hex": "#091a34",
+        "x": 192,
+        "y": 45
+      },
+      {
+        "share": 0.0813,
+        "hex": "#1d3561",
+        "x": 324,
+        "y": 225
+      },
+      {
+        "share": 0.0215,
+        "hex": "#475d8f",
+        "x": 513,
+        "y": 390
+      },
+      {
+        "share": 0.021,
+        "hex": "#87cde6",
+        "x": 966,
+        "y": 207
+      }
+    ]
+  }
+]
